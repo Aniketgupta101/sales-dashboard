@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+pandas
+openpyxl
+psycopg2-binary
+pytest
+httpx

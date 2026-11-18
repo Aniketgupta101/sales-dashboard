@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>📊 Sales Dashboard</h1>
+            <p class="subtitle">Jan – Jun 2026 · Sales Analytics</p>
+        </div>
+    </header>
+
+    <!-- Filter Bar -->
+    <section class="filter-bar">
+        <div class="filter-group">
+            <label for="filter-from">From</label>
+            <input type="date" id="filter-from" value="2026-01-01">
+        </div>
+        <div class="filter-group">
+            <label for="filter-to">To</label>
+            <input type="date" id="filter-to" value="2026-06-30">
+        </div>
+        <div class="filter-group">
+            <label for="filter-category">Category</label>
+            <select id="filter-category"><option value="">All</option></select>
+        </div>
+        <div class="filter-group">
+            <label for="filter-segment">Segment</label>
+            <select id="filter-segment"><option value="">All</option></select>
+        </div>
+        <div class="filter-group">
+            <label for="filter-city">City</label>
+            <select id="filter-city"><option value="">All</option></select>
+        </div>
+        <div class="filter-group">
+            <label for="filter-status">Status</label>
+            <select id="filter-status"><option value="">All</option></select>
+        </div>
+        <div class="filter-actions">
+            <button id="btn-apply" class="btn btn-primary">Apply</button>
+            <button id="btn-reset" class="btn btn-secondary">Reset</button>
+        </div>
+    </section>
+
+    <!-- Loading Overlay -->
+    <div id="loading" class="loading-overlay" style="display:none;">
+        <div class="spinner"></div>
+        <p>Loading dashboard…</p>
+    </div>
+
+    <!-- Error Banner -->
+    <div id="error-banner" class="error-banner" style="display:none;">
+        <p id="error-message">Failed to load data.</p>
+        <button onclick="document.getElementById('error-banner').style.display='none'" class="btn btn-secondary btn-sm">Dismiss</button>
+    </div>
+
+    <!-- KPI Cards -->
+    <section class="kpi-section">
+        <div class="kpi-card">
+            <div class="kpi-icon">💰</div>
+            <div class="kpi-body">
+                <h3>Net Revenue</h3>
+                <p class="kpi-value" id="kpi-revenue">—</p>
+            </div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-icon">📦</div>
+            <div class="kpi-body">
+                <h3>Total Orders</h3>
+                <p class="kpi-value" id="kpi-orders">—</p>
+            </div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-icon">👥</div>
+            <div class="kpi-body">
+                <h3>Unique Customers</h3>
+                <p class="kpi-value" id="kpi-customers">—</p>
+            </div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-icon">📈</div>
+            <div class="kpi-body">
+                <h3>Avg Order Value</h3>
+                <p class="kpi-value" id="kpi-aov">—</p>
+            </div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-icon">🔁</div>
+            <div class="kpi-body">
+                <h3>Repeat Customers</h3>
+                <p class="kpi-value" id="kpi-repeat">—</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Charts -->
+    <section class="charts-section">
+        <div class="chart-card chart-wide">
+            <h3>Monthly Revenue Trend</h3>
+            <div class="chart-container">
+                <canvas id="chart-monthly"></canvas>
+            </div>
+        </div>
+        <div class="chart-card">
+            <h3>Revenue by Category</h3>
+            <div class="chart-container">
+                <canvas id="chart-category"></canvas>
+            </div>
+        </div>
+        <div class="chart-card">
+            <h3>Orders by Status</h3>
+            <div class="chart-container">
+                <canvas id="chart-status"></canvas>
+            </div>
+        </div>
+        <div class="chart-card">
+            <h3>Revenue by Segment</h3>
+            <div class="chart-container">
+                <canvas id="chart-segment"></canvas>
+            </div>
+        </div>
+        <div class="chart-card">
+            <h3>Top 5 Products</h3>
+            <div class="chart-container">
+                <canvas id="chart-products"></canvas>
+            </div>
+        </div>
+        <div class="chart-card chart-wide">
+            <h3>Revenue by City</h3>
+            <div class="chart-container">
+                <canvas id="chart-city"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Sales Dashboard &copy; 2026 · Built with FastAPI &amp; Chart.js</p>
+    </footer>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
